@@ -19,7 +19,7 @@ It provides basic functionality for recording, playback, and processing of audio
 ## Requirements
 
 - C compiler (e.g., `gcc`)
-- PortAudio (for linux audio input/output)
+- PortAudio (for cross-platform audio input/output)
 - Optional: libsndfile (for handling WAV files)
 
 ---
