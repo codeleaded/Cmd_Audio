@@ -1,4 +1,4 @@
-#include "/home/codeleaded/System/Static/Library/Audio.h"
+#include "../inc/Audio.h"
 
 #define SAMPLE_RATE         44100
 #define CHANNELS            1
