@@ -2,28 +2,22 @@ CC = gcc
 #CFLAGS = -Wall -Wextra -std=c11 -O2 -g -mavx2
 CFLAGS = -O2 -mavx2
 INCLUDES = -Isrc
-LDFLAGS = -lm -lasound
+LDFLAGS = -lm -lX11 -lpng
 
 SRC_DIR = src
 BUILD_DIR = build
+CODE_DIR = code
 
 SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 
 TARGET = $(BUILD_DIR)/Main
 
-.PHONY: clean all exe
-
-all: $(TARGET)
-
-$(TARGET): $(OBJS)
-	$(CC) $^ -o $@ $(LDFLAGS) 
-
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+all: 
+	$(CC) $(CFLAGS) $(INCLUDES) ./$(SRC_DIR)/Main.c -o ./$(TARGET) $(LDFLAGS) 
 
 exe:
-	./$(TARGET) ./data/Beat.wav
+	./$(TARGET) /home/codeleaded/Hecke/C/
 
 clean:
 	rm -rf $(BUILD_DIR)/*

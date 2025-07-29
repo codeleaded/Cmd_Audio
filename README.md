@@ -1,14 +1,33 @@
-# Mein C-Projekt
+# Project
 
-Dies ist ein Beispielprojekt in C unter der GPLv3-Lizenz.
+A brief description of what your project does and its purpose.
 
-## 🧠 Beschreibung
+---
 
-Das Programm [kurze Beschreibung einfügen].  
-Beispiel: Dieses Tool durchsucht einen Ordner und führt Kommandos in allen Unterverzeichnissen aus.
+## Table of Contents
 
-## 🔧 Build
+- [Installation](#installation)  
+Clone the repo
+- [License](#license)  
+GNU Public License 3.0
+- [Contact](#contact)  
+https://github.com/codeleaded
+---
+
+## Installation
+
+How to install and set up your project:
 
 ```bash
+# Example installation commands
+git clone https://github.com/codeleaded/<repo>.git
+cd <repo>
+# just build
 make all
+# build and run
 make do
+# run after build
+make exe
+# clean build
+make clean
+```
