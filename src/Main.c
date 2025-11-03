@@ -1,4 +1,10 @@
+#if defined __linux__
 #include "/home/codeleaded/System/Static/Library/Audio.h"
+#elif defined _WINE
+#include "/home/codeleaded/System/Static/Library/Audio.h"
+#elif defined _WIN32
+#include "F:/home/codeleaded/System/Static/Library/Audio.h"
+#endif
 
 #define SAMPLE_RATE         44100
 #define CHANNELS            1
