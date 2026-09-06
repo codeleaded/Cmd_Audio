@@ -1,12 +1,10 @@
 # === Makefile.windows ===
 
-
-
 CC = gcc
 WARNINGS = -Werror
 CFLAGS = -O0 -mavx2 -std=gnu17 $(WARNINGS)
 INCLUDES = -Isrc
-LDFLAGS = -lm -luser32 -lwinmm -lxinput9_1_0
+LDFLAGS = -lm -luser32 -lwinmm -lxinput9_1_0 -lmpg123 -lshlwapi
 
 SRC_DIR = src
 BUILD_DIR = build

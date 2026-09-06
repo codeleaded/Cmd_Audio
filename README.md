@@ -5,6 +5,8 @@ This project is a C-based application designed to read and play audio files. It 
 
 ## Features
 - Reading of WAV audio files.
+- Reading and writing MP3 audio files on Linux through `libmpg123` and `libmp3lame`.
+- MP3 input is decoded to interleaved 16-bit PCM and can use the existing WAV/audio playback path.
 - Playback of WAV audio files.
 - Support for multiple platforms: Linux, Windows, Wine, and WebAssembly.
 
@@ -26,6 +28,7 @@ This project is a C-based application designed to read and play audio files. It 
 - C/C++ Compiler and Debugger (GCC, Clang)
 - Make utility
 - Standard development tools
+- Linux MP3 runtime libraries: `libmpg123.so.0` and `libmp3lame.so.0`
 
 ## Build & Run
 To build and run the project, follow these steps:
@@ -66,3 +69,9 @@ To build and run the project, follow these steps:
     ```
 
 Replace `(os)` with the appropriate OS specific makefile target (linux, windows, wine, web).
+
+An MP3 file can be played by passing its path to the executable:
+
+```sh
+./build/Main ./data/example.mp3
+```

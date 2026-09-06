@@ -4,7 +4,7 @@ CC = gcc
 WARNINGS = -Werror
 CFLAGS = -O0 -mavx2 -std=gnu17 $(WARNINGS)
 INCLUDES = -Isrc
-LDFLAGS = -lm -lasound
+LDFLAGS = -lm -lasound -ldl
 SRC_DIR = src
 BUILD_DIR = build
 TARGET = $(BUILD_DIR)/Main

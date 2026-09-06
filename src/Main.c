@@ -1,9 +1,9 @@
 #if defined __linux__
-#include "/home/codeleaded/System/Static/Library/Audio.h"
+#include "/home/codeleaded/System/Static/Library/AudioPlayer.h"
 #elif defined _WINE
-#include "/home/codeleaded/System/Static/Library/Audio.h"
+#include "/home/codeleaded/System/Static/Library/AudioPlayer.h"
 #elif defined _WIN32
-#include "F:/home/codeleaded/System/Static/Library/Audio.h"
+#include "F:/home/codeleaded/System/Static/Library/AudioPlayer.h"
 #endif
 
 #define SAMPLE_RATE             44100
@@ -11,8 +11,8 @@
 #define BITS_PER_SAMPLE         16
 #define DURATION_SECONDS        5
 #define FRAMES_PER_BUFFER       1024
-#define FILENAME_IN             "./data/coin.wav"
-#define FILENAME_OUT            "./data/Rec_out.wav"
+#define FILENAME_IN             "./data/coin.mp3"
+#define FILENAME_OUT            "./data/Rec_out.mp3"
 
 /*
 int main(int argc, char *argv[]) {
@@ -30,21 +30,20 @@ int main(int argc, char *argv[]) {
 */
 
 int main(int argc, char *argv[]) {
-    // if (argc != 2) {
-    //     printf("use: %s <wav-file .wav>\n",argv[0]);
-    //     return 1;
-    // }
+    AudioPlayer ap = AudioPlayer_New();
+    if(argc > 1){
+        for(int i = 1;i < argc;i++){
+            AudioPlayer_Add(&ap,argv[i]);
+        }
+    }else{
+        AudioPlayer_Add(&ap,"./data/coin.mp3");
+        AudioPlayer_Add(&ap,"./data/coin.wav");
+        AudioPlayer_Add(&ap,"./data/jump.wav");
+    }
 
-    OAudio a = OAudio_New(BITS_PER_SAMPLE,FRAMES_PER_BUFFER,2,SAMPLE_RATE);
-    WavFile wf = WavFile_Read(FILENAME_IN,FRAMES_PER_BUFFER);
-    //WavFile wf = WavFile_Read(argv[1],FRAMES_PER_BUFFER);
-    WavFile_Print(&wf);
-
-    OAudio_Adapt(&a,&wf);
-    OAudio_Play(&a,&wf);
-
-    WavFile_Free(&wf);
-    OAudio_Free(&a);
+    AudioPlayer_Start(&ap);
+    Thread_Sleep_M(10000);
+    AudioPlayer_Free(&ap);
 
     printf("replay done.\n");
     return 0;
